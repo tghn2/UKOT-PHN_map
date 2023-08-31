@@ -1,0 +1,87 @@
+# Load Libraries
+library(tidyverse)
+library(dplyr)
+library(maps)
+library(shiny)
+library(leaflet)
+library(raster)
+library(htmltools)
+library(htmlwidgets)
+
+Load data
+Convert data
+Visualise data
+Load maptiles
+
+### UI.r file ###
+Create shinyapp map input in shinyapp UI file
+# Maximum is 900px, 100% width of column for responsive design - smallest size most likely 300px
+Load map as image
+### Some example code to manipulate
+### leaflet() %>%
+###   setView(-0.1354223, 51.5135085, zoom = 17) %>%
+###   addTiles(urlTemplate = "http://walkerke.github.io/tiles/snow/{z}/{x}/{y}.png",
+###            attribution = 'Data source: <a href="http://guides.library.yale.edu/gisworkshoparchive">Yale ### University Library</a>', 
+###            options = tileOptions(minZoom = 15, maxZoom = 18, tms = TRUE)) %>%
+###   addCircles(data = deathsxy, 
+###              radius = deathsxy$Num_Cases, 
+###              popup = circle_popup, 
+###              color = "red", 
+###              fillColor = "red")
+
+### var map = L.map('map', {
+###  crs: L.CRS.Simple, // CRS.Simple, which represents a square grid:
+###  minZoom: -2,
+###  maxZoom: 1
+### })
+
+leaflet() %>%
+setView(,,zoom = 2) %>%
+addTiles(urlTemplate = "https://github.com/carolinajane/UKOT-PHN_maptiles/{z}/{x}/{y}.png",
+        attribution = 'Data source: IMPROPER Design Agency for UKOT-PHN',
+        options = tileOptions(minZoom = 0, maxZoom = 6, tms = TRUE)) %>%
+addCircles(data = ,
+            radius = ,
+            popup = circle_popup,
+            color = "E40046",
+            fillColor = "E40046")
+             
+Leaflet.TileLayer.IIP - need to check to see if this works with R
+Zoom default at 50%
+Image full size: width = 8000, height = 4500
+# Need to append to map tile loading script?
+0% zoom = match frame size
+50% zoom = half full image size
+100% zoom = full image size
+Load canvas layer for circles/markers
+Locations for Territory markers - co-ordinates??
+Load pop up information
+
+Data groups
+Location and Geography
+Population - pie charts by percentage
+Climate
+Finance
+
+### Server.r file ###
+Output/"back" information needs to go in the server file
+# Need data of UKOT territories from the documents sent to me by Brittney. Unsure of what table layout to use... Will need to experiment.
+
+Interactivity
+Tracking: mouse movement
+Event: mouse hoover over circle, circle highlighted
+pop-up, Event: mouse click on circle, small pop up with country name and location co-ordinates
+
+Event: mouse click on cross on small pop, closes pop up - close blind pop up?
+Event: mouse click on read more in pop up - pop up closes, right hand side panel appears
+Event: mouse click on cross on side panel, side panel closes
+Event: mouse click on panel and then scroll bar, scroll in side panel moves
+Event: mouse click outside of map, scroll bar moves main page
+Event: mouse hoover over link in pop-up, link becomes high-lighted
+Event: mouse click on pop-up, read more - open side pane with all information, opacity of map reduces to 50%
+Event: mouse click and hold on map, move map
+Event: mouse click on zoom bar, adjusts zoom level of map
+Event: mouse click on top of zoom bar or plus sign, zoom level 100%
+Event: mouse click on bottom of zoom bar or minus sign, zoom level 0%
+
+call shinyapp in ui and server
